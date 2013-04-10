@@ -1,11 +1,15 @@
 (function() {
 	// API usage
-	// need to create Google objects separate from library to enforce loose coupling
-	window.onload = function onload() {
+	// Creation of Google objects separate from library to enforce loose coupling
+	$(function() {
 		// First, create Geocoder objects to be passed in, assuming library is available
 		// Pass in hard-coded coordinates by creating a Latlng Google object
-		var geocoder = new google.maps.Geocoder();
-		var latlng = new google.maps.Latlng(45.24645, -110.24346);
+		try {
+			var geocoder = new google.maps.Geocoder();
+			var latlng = new google.maps.Latlng(45.24645, -110.24346);
+		} catch (e) {
+			throw new Error('Google Maps API library is missing.');
+		}
 
 		// Initialize the library
 		/**
@@ -43,35 +47,11 @@
 			geolocation.getCurrentPosition(initializeGuier);
 		}
 		
-		
-		// Library methods
-		// TODO(mgerton): implement these	
-		
-		// get full address
-		//Guier.getFullAddress();
-
-		// get the country
-		//Guier.getCountry();
-
-		// get the state/province
-		//Guier.getState();
-		//Guier.getProvince();
-		
-		// get the city
-		//Guier.getCity();
-		
-		// get the ZIP code
-		//Guier.getZipCode();
-		
-		// get postal address
-		//Guier.getPostalAddress();
-
-		// v2 API?
 		// Advantages: generic locate() method could abstract get() methods into privates
 		// support for callbacks
 		//Guier.locate('country');
 		//Guier.locate('state', function() {
 			// callback stuff
 		//});
-	};	
+	});
 }());

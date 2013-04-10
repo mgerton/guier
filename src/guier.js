@@ -18,6 +18,9 @@
 	 * @constructor
 	 * Bootstraps the library by storing references to the Google 
 	 * Maps API objects
+	 *
+	 * @param {Object} args
+	 * 			An object literal of arguments to be applied to the library
 	 */
 	Guier.init = function init(args) {
 		console.info('Initializing Guier...');
