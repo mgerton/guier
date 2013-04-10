@@ -60,6 +60,7 @@
 	 * @param {String} status
 	 * 			A status code
 	 */
+	// TODO(mgerton): Finish implementing me!
 	Guier._parseGeocodeObject = function parseGeocodeObject(results, status) {
 		if (status === google.maps.GeocoderStatus.OK) {
 			// return the results
