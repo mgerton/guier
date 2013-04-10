@@ -61,6 +61,7 @@
 		if (status === google.maps.GeocoderStatus.OK) {
 			// return the results
 			console.log('Geocoder parsing happens here.');
+			console.log('store all of the nicely parsed data in this.geoObject');
 		}
 	};
 
@@ -74,7 +75,21 @@
 	 * 			An optional callback function
 	 */
 	Guier.get = function get(attr, callback) {
-		//
+		var searchableFields = [];
+		var searchResult = '';
+		var retval = '';
+
+		if (searchableFields.indexOf(attr) !== -1) {
+			searchResult = this.geoObject[attr];
+		} else {
+			throw new Error('The location attribute cannot be found.');
+		}
+
+		if (typeof callback === 'object' && callback !== undefined) {
+			retval = callback(result);
+		}
+
+		return retval;
 	};
 
 	// Expose the Guier object for use
