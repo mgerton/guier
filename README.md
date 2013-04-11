@@ -25,16 +25,20 @@ Guier.init({
 	coordinates: latlng
 });
 
-console.log(Guier.getCity());	// Outputs 'Chicago'
+console.log(Guier.get('city'));	// Outputs 'Chicago'
 ```
 
 2. Utilize the HTML5 Geolocation API and initialize Guier within the `geolocation` object's callback:
 
 ```js
+// Checking first for geolocation support of course
 var geolocation = navigator.geolocation ? navigator.geolocation : false;
 if (!!geolocation) {
 	geolocation.getCurrentPosition(function () {
+		// Now we can create the coordinates and initalize Guier
+		var geocoder = new google.maps.Geocoder();
 		var latlng = new google.maps.Latlng(position.coords.latitude, position.coords.longitude);
+		
 		Guier.init({
 			geocoder: geocoder,
 			coordinates: latlng
