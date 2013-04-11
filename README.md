@@ -13,6 +13,7 @@ As with most JavaScript libraries, you'll first want to grab a copy of the libra
 From here, you have two different methods in which you can use Guier to get your location data:
 
 1. Call Guier's `init()` method in a basic onload event, explicitly defining the coordinates to use:
+
 ```js
 // We start by initializing the Google Maps objects to enforce loose coupling
 var geocoder = new google.maps.Geocoder();
@@ -27,7 +28,8 @@ Guier.init({
 console.log(Guier.getCity());	// Outputs 'Chicago'
 ```
 
-2. Utilize the HTML5 Geolocation API and initialize Guier within the `geolocation` object's callback
+2. Utilize the HTML5 Geolocation API and initialize Guier within the `geolocation` object's callback:
+
 ```js
 var geolocation = navigator.geolocation ? navigator.geolocation : false;
 if (!!geolocation) {
