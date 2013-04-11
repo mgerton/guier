@@ -79,7 +79,7 @@
 	 * 			An optional callback function
 	 */
 	Guier.get = function get(attr, callback) {
-		var searchableFields = [];
+		var searchableFields = ['city', 'state', 'zip', 'address'];
 		var searchResult = '';
 		var retval = '';
 
