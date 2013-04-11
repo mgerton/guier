@@ -1,8 +1,8 @@
-## Guier
-
+# Guier
+-------
 Guier is a wrapper library for the [Google Maps API](https://developers.google.com/maps/documentation/javascript/geocoding). Guier specifically targets users who are looking for a more simplified way to work with data Google's API returns when working with reverse-geocoding (returning a human-readable location from coordinates).
 
-# Installation and Basic Usage
+## Installation and Basic Usage
 As with most JavaScript libraries, you'll first want to grab a copy of the library and add it into your page after the Maps API script tag:
 
 ```html
@@ -45,9 +45,9 @@ From here, you have two different methods in which you can use Guier to get your
 	}
 	```
 
-### FAQs
-Q: What's the goal of this library? 
+## FAQs
+Q: What's the goal of this library?  
 A: To be a simple, (hopefully) lightweight wrapper library that helps developers with headaches when attempting to work with the returned data from Google's Geocoder object, specifically in the case of reverse geocoding.
 
-Q: Guier? Huh? 
+Q: Guier? Huh?  
 A: I was searching for a unique name that I could use to make the library stand out. After reading Wikipedia's article on the [origins of GPS](http://en.wikipedia.org/wiki/GPS), I opted to name the library afte William Guier since he was an early pioneer in the technology (plus his last name is pretty cool).
