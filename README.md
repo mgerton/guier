@@ -6,6 +6,7 @@ Guier is a wrapper library for the [Google Maps API](https://developers.google.c
 As with most JavaScript libraries, you'll first want to grab a copy of the library and add it into your page after the Maps API script tag:
 
 ```html
+<script src="http://www.google.com/jsapi"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script src="guier.js"></script>
 ```
