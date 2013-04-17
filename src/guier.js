@@ -86,9 +86,10 @@
 		if (searchableFields.indexOf(attr) !== -1) {
 			searchResult = this.geoObject[attr];
 		} else {
-			throw new Error('The location attribute cannot be found.');
+			console.error('The location attribute cannot be found.');
 		}
 
+		// Handle the callback
 		if (typeof callback === 'object' && callback !== undefined) {
 			retval = callback(result);
 		}

@@ -46,12 +46,5 @@
 		if (!!geolocation) {
 			geolocation.getCurrentPosition(initializeGuier);
 		}
-		
-		// Advantages: generic locate() method could abstract get() methods into privates
-		// support for callbacks
-		//Guier.locate('country');
-		//Guier.locate('state', function() {
-			// callback stuff
-		//});
 	});
 }());
