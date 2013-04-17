@@ -17,14 +17,14 @@ From here, you have two different methods in which you can use Guier to get your
 	```js
 	// We start by initializing the Google Maps objects to enforce loose coupling
 	var geocoder = new google.maps.Geocoder();
-	var latlng = new google.maps.Latlng(45.24645, -110.24346);
+	var latlng = new google.maps.Latlng(41.87885150, -87.63647820000001);
 
 	// Now we pass the Geocoder and Latlng objects into Guier's init() method
 	Guier.init({
 		geocoder: geocoder,
 		coordinates: latlng
 	});
-
+	
 	console.log(Guier.get('city'));	// Outputs 'Chicago'
 	```
 

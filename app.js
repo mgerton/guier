@@ -4,12 +4,12 @@
 	$(function() {
 		// First, create Geocoder objects to be passed in, assuming library is available
 		// Pass in hard-coded coordinates by creating a Latlng Google object
-		try {
+		// try {
 			var geocoder = new google.maps.Geocoder();
 			var latlng = new google.maps.Latlng(45.24645, -110.24346);
-		} catch (e) {
-			throw new Error('Google Maps API library is missing.');
-		}
+		// } catch (e) {
+		// 	throw new Error(e);
+		// }
 
 		// Initialize the library
 		/**
@@ -32,19 +32,19 @@
 		 * should exist within here.
 		 */
 		// TODO(mgerton): If a return value is specified, can the logic be handled in the if()? Should it?
-		var initializeGuier = function initializeGuier(position) {
-			// need to create Latlng object here; hard to decouple Geolocation API and Google API
-			var latlng = new google.maps.Latlng(position.coords.latitude, position.coords.longitude);
-			Guier.init({
-				geocoder: geocoder,
-				coordinates: latlng
-			});
-		};
+		// var initializeGuier = function initializeGuier(position) {
+		// 	// need to create Latlng object here; hard to decouple Geolocation API and Google API
+		// 	var latlng = new google.maps.Latlng(position.coords.latitude, position.coords.longitude);
+		// 	Guier.init({
+		// 		geocoder: geocoder,
+		// 		coordinates: latlng
+		// 	});
+		// };
 		
 		// In your document.ready or window.onload, run this check
-		var geolocation = navigator.geolocation ? navigator.geolocation : false;
-		if (!!geolocation) {
-			geolocation.getCurrentPosition(initializeGuier);
-		}
+		// var geolocation = navigator.geolocation ? navigator.geolocation : false;
+		// if (!!geolocation) {
+		// 	geolocation.getCurrentPosition(initializeGuier);
+		// }
 	});
 }());
