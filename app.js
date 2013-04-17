@@ -6,7 +6,7 @@
 		// Pass in hard-coded coordinates by creating a Latlng Google object
 		// try {
 			var geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.Latlng(45.24645, -110.24346);
+			var latlng = new google.maps.Latlng(41.87885150, -87.63647820000001);
 		// } catch (e) {
 		// 	throw new Error(e);
 		// }
