@@ -4,12 +4,12 @@
 	$(function() {
 		// First, create Geocoder objects to be passed in, assuming library is available
 		// Pass in hard-coded coordinates by creating a Latlng Google object
-		// try {
+		try {
 			var geocoder = new google.maps.Geocoder();
 			var latlng = new google.maps.Latlng(41.87885150, -87.63647820000001);
-		// } catch (e) {
-		// 	throw new Error(e);
-		// }
+		} catch (e) {
+			throw new Error(e);
+		}
 
 		// Initialize the library
 		/**

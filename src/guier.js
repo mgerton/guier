@@ -4,16 +4,15 @@
  * @version 0.1
  */
 ;(function(window, undefined) {
-	// var Guier = window.Guier || {};
-	// window.Guier = Guier;
-
+	'use strict';
+	
 	var VERSION = '0.1.0';
-
+	
 	/**
 	 * Create the Guier object to attach methods to
 	 */
 	var Guier = window.Guier || {};
-
+	
 	/**
 	 * @constructor
 	 * Bootstraps the library by storing references to the Google 
@@ -37,7 +36,7 @@
 			throw new Error('Guier requires Google Maps API objects to function.');
 		}
 	};
-
+	
 	/**
 	 * @private
 	 * Makes the API call to the Geocoder service
@@ -48,7 +47,7 @@
 	Guier._reverseGeocode = function reverseGeocode() {
 		this.geocoder.geocode({ 'latlng': this.coordinates }, _parseGeocodeObject);
 	};
-
+	
 	/**
 	 * @private
 	 * Callback function used when Google geocode() method is called. This 
@@ -66,9 +65,12 @@
 			// return the results
 			console.log('Geocoder parsing happens here.');
 			console.log('store all of the nicely parsed data in this.geoObject');
+
+			var locationArray = results[0].address_components[0];
+
 		}
 	};
-
+	
 	/**
 	 * Main accessor method. Takes a string representing the requested 
 	 * geocode data and an optional callback and returns the information
@@ -96,7 +98,7 @@
 
 		return retval;
 	};
-
+	
 	// Expose the Guier object for use
 	window.Guier = Guier;
 }(window));
