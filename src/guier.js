@@ -30,12 +30,13 @@
 
 		// References to the Google API objects
 		this.geocoder = (args.geocoder) ? args.geocoder : undefined;
-		this.coordinates = (args.latlng) ? args.latlng : undefined;
+		this.coordinates = (args.coordinates) ? args.coordinates : undefined;
 
 		// We need these objects in order to make the magic happen
 		if (this.geocoder === undefined || this.coordinates === undefined) {
 			throw new Error('Guier requires Google Maps API objects to function.');
 		}
+		this._reverseGeocode();
 	};
 
 	/**
@@ -46,7 +47,7 @@
 	 * 			The Geoposition object
 	 */
 	Guier._reverseGeocode = function reverseGeocode() {
-		this.geocoder.geocode({ 'latlng': this.coordinates }, _parseGeocodeObject);
+		this.geocoder.geocode({ 'latLng': this.coordinates }, this._parseGeocodeObject);
 	};
 
 	/**
@@ -66,6 +67,17 @@
 			// return the results
 			console.log('Geocoder parsing happens here.');
 			console.log('store all of the nicely parsed data in this.geoObject');
+
+			// for (var i = 0; i < components.length; i += 1){
+			// 	for (var j = 0; j < components[i].types.length; j += 1){
+			// 		if (components[i].types[j] === type && type === 'administrative_area_level_1'){
+			// 			return {full: components[i].long_name, abbr: components[i].short_name};
+			// 		}else if(components[i].types[j] === type){
+			// 			return components[i].long_name;
+			// 		}
+			// 	}
+			// }
+			// return '';
 		}
 	};
 

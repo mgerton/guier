@@ -6,7 +6,7 @@
 		// Pass in hard-coded coordinates by creating a Latlng Google object
 		try {
 			var geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.Latlng(45.24645, -110.24346);
+			var latlng = new google.maps.LatLng(45.24645, -110.24346);
 		} catch (e) {
 			throw new Error('Google Maps API library is missing.');
 		}
@@ -25,7 +25,7 @@
 
 		// Hey, I need to make another non-initalize method call
 		//Guier.relocate();
-		
+
 		/**
 		 * Usage with the HTML5 Geolocation API
 		 * This sample method can be called as the HTML geolocation API callback. All of the additional Guier logic
@@ -40,7 +40,7 @@
 				coordinates: latlng
 			});
 		};
-		
+
 		// In your document.ready or window.onload, run this check
 		var geolocation = navigator.geolocation ? navigator.geolocation : false;
 		if (!!geolocation) {
