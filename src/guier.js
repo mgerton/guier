@@ -62,7 +62,7 @@
 	 * 			A status code
 	 */
 	// TODO(mgerton): Finish implementing me!
-	// TODO(ncook): Fix this referencing the window object.
+	// TODO(nathancharles): 'this' is referencing the window object. Fix?
 	Guier._parseGeocodeObject = function parseGeocodeObject(results, status) {
 		if (status === google.maps.GeocoderStatus.OK) {
 			var bestResult = results[0];
@@ -79,7 +79,7 @@
 			// Additional address components
 			Guier.geoObject.county = Guier._extractFromAddress(addressObject, 'administrative_area_level_2');
 
-			console.info('Parsing Finished.');
+			console.info('Parsing Finished, location available');
 		}
 	};
 
@@ -114,20 +114,23 @@
 	 * @param {Function} callback
 	 * 			An optional callback function
 	 */
+	// TODO: Deal with async location object definition.
 	Guier.get = function get(attr, callback) {
-		var searchableFields = ['city', 'state', 'zip', 'address'];
+		var searchableFields = ['city', 'state', 'zip', 'address', 'county'];
 		var searchResult = '';
 		var retval = '';
 
 		if (searchableFields.indexOf(attr) !== -1) {
-			searchResult = this.geoObject[attr];
+			searchResult = Guier.geoObject[attr];
 		} else {
 			console.error('The location attribute cannot be found.');
 		}
 
 		// Handle the callback
-		if (typeof callback === 'object' && callback !== undefined) {
-			retval = callback(result);
+		if (callback !== undefined && typeof callback === 'function') {
+			retval = callback(searchResult);
+		} else {
+			retval = searchResult;
 		}
 
 		return retval;
