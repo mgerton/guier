@@ -2,6 +2,7 @@
 	// API usage
 	// Creation of Google objects separate from library to enforce loose coupling
 	$(function() {
+		var geocoder, latlng;
 		// First, create Geocoder objects to be passed in, assuming library is available
 		// Pass in hard-coded coordinates by creating a Latlng Google object
 		try {

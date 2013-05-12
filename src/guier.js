@@ -68,16 +68,18 @@
 			var bestResult = results[0];
 			var addressObject = results[0].address_components;
 
-			// return the results
-			// console.log('Geocoder parsing happens here.');
-			// console.log('store all of the nicely parsed data in this.geoObject');
+			console.info('Parsing geocode results...');
 
+			// Whitelisted address components
 			Guier.geoObject.address = bestResult.formatted_address;
 			Guier.geoObject.city = Guier._extractFromAddress(addressObject, 'locality');
 			Guier.geoObject.state = Guier._extractFromAddress(addressObject, 'administrative_area_level_1');
 			Guier.geoObject.zip = Guier._extractFromAddress(addressObject, 'postal_code');
 
+			// Additional address components
 			Guier.geoObject.county = Guier._extractFromAddress(addressObject, 'administrative_area_level_2');
+
+			console.info('Parsing Finished.');
 		}
 	};
 
