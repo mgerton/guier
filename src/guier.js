@@ -62,23 +62,45 @@
 	 * 			A status code
 	 */
 	// TODO(mgerton): Finish implementing me!
+	// TODO(ncook): Fix this referencing the window object.
 	Guier._parseGeocodeObject = function parseGeocodeObject(results, status) {
 		if (status === google.maps.GeocoderStatus.OK) {
-			// return the results
-			console.log('Geocoder parsing happens here.');
-			console.log('store all of the nicely parsed data in this.geoObject');
+			var bestResult = results[0];
+			var addressObject = results[0].address_components;
 
-			// for (var i = 0; i < components.length; i += 1){
-			// 	for (var j = 0; j < components[i].types.length; j += 1){
-			// 		if (components[i].types[j] === type && type === 'administrative_area_level_1'){
-			// 			return {full: components[i].long_name, abbr: components[i].short_name};
-			// 		}else if(components[i].types[j] === type){
-			// 			return components[i].long_name;
-			// 		}
-			// 	}
-			// }
-			// return '';
+			// return the results
+			// console.log('Geocoder parsing happens here.');
+			// console.log('store all of the nicely parsed data in this.geoObject');
+
+			Guier.geoObject.address = bestResult.formatted_address;
+			Guier.geoObject.city = Guier._extractFromAddress(addressObject, 'locality');
+			Guier.geoObject.state = Guier._extractFromAddress(addressObject, 'administrative_area_level_1');
+			Guier.geoObject.zip = Guier._extractFromAddress(addressObject, 'postal_code');
+
+			Guier.geoObject.county = Guier._extractFromAddress(addressObject, 'administrative_area_level_2');
 		}
+	};
+
+	/**
+	 * Loops through the address format returned by Google's Geocoder.
+	 * It loops through each address component and checks it's type against the type passed in.
+	 * It will return the long name of the address component.
+	 * If the type isn't found, a blank string is returned.
+	 *
+	 * @param components{object} - The collection of address components.
+	 * @param type{string} - The type of address component to extract.
+	 *
+	 * @return {string} - the address component requested, or an empty string if it doesn't exist.
+	 */
+	Guier._extractFromAddress = function extractFromAddress(components, type){
+		for (var i = 0; i < components.length; i += 1){
+			for (var j = 0; j < components[i].types.length; j += 1){
+				if(components[i].types[j] === type){
+					return components[i].long_name;
+				}
+			}
+		}
+		return '';
 	};
 
 	/**
