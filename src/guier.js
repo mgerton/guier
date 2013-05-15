@@ -47,7 +47,8 @@
 	 * 			The Geoposition object
 	 */
 	Guier._reverseGeocode = function reverseGeocode() {
-		this.geocoder.geocode({ 'latLng': this.coordinates }, this._parseGeocodeObject);
+		// binding reference to this to anonymous function so that it is available in the callback
+		this.geocoder.geocode({ 'latLng': this.coordinates }, (this._parseGeocodeObject).bind(this));
 	};
 
 	/**
@@ -71,13 +72,13 @@
 			console.info('Parsing geocode results...');
 
 			// Whitelisted address components
-			Guier.geoObject.address = bestResult.formatted_address;
-			Guier.geoObject.city = Guier._extractFromAddress(addressObject, 'locality');
-			Guier.geoObject.state = Guier._extractFromAddress(addressObject, 'administrative_area_level_1');
-			Guier.geoObject.zip = Guier._extractFromAddress(addressObject, 'postal_code');
+			this.geoObject.address = bestResult.formatted_address;
+			this.geoObject.city = Guier._extractFromAddress(addressObject, 'locality');
+			this.geoObject.state = Guier._extractFromAddress(addressObject, 'administrative_area_level_1');
+			this.geoObject.zip = Guier._extractFromAddress(addressObject, 'postal_code');
 
 			// Additional address components
-			Guier.geoObject.county = Guier._extractFromAddress(addressObject, 'administrative_area_level_2');
+			this.geoObject.county = Guier._extractFromAddress(addressObject, 'administrative_area_level_2');
 
 			console.info('Parsing Finished, location available');
 		}
@@ -95,8 +96,10 @@
 	 * @return {string} - the address component requested, or an empty string if it doesn't exist.
 	 */
 	Guier._extractFromAddress = function extractFromAddress(components, type){
-		for (var i = 0; i < components.length; i += 1){
-			for (var j = 0; j < components[i].types.length; j += 1){
+		var componentsLength = components.length;
+		for (var i = 0; i < componentsLength; i += 1){
+			var typesLength = components[i].types.length;
+			for (var j = 0; j < typesLength; j += 1){
 				if(components[i].types[j] === type){
 					return components[i].long_name;
 				}
