@@ -47,8 +47,8 @@ From here, you have two different methods in which you can use Guier to get your
 	```
 
 ## FAQs
-**Q:** What's the goal of this library?  
+**Q:** What's the goal of this library?
 **A:** To be a simple, (hopefully) lightweight wrapper library that helps developers with headaches when attempting to work with the returned data from Google's Geocoder object, specifically in the case of reverse geocoding.
 
-**Q:** Guier? Huh?  
+**Q:** Guier? Huh?
 **A:** I was searching for a unique name that I could use to make the library stand out. After reading Wikipedia's article on the [origins of GPS](http://en.wikipedia.org/wiki/GPS), I opted to name the library after William Guier since he was an early pioneer in the technology (plus his last name is pretty cool).
