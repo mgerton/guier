@@ -2,11 +2,12 @@
 	// API usage
 	// Creation of Google objects separate from library to enforce loose coupling
 	$(function() {
+		var geocoder, latlng;
 		// First, create Geocoder objects to be passed in, assuming library is available
 		// Pass in hard-coded coordinates by creating a Latlng Google object
 		try {
-			var geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.Latlng(41.87885150, -87.63647820000001);
+			geocoder = new google.maps.Geocoder();
+			latlng = new google.maps.LatLng(45.24645, -110.24346);
 		} catch (e) {
 			throw new Error(e);
 		}
@@ -25,7 +26,7 @@
 
 		// Hey, I need to make another non-initalize method call
 		//Guier.relocate();
-		
+
 		/**
 		 * Usage with the HTML5 Geolocation API
 		 * This sample method can be called as the HTML geolocation API callback. All of the additional Guier logic
