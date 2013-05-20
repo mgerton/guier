@@ -2,3 +2,6 @@
 .DS_Store
 *.tmp
 index.html
+
+npm-debug.log
+node_modules
