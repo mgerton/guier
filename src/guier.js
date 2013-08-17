@@ -5,17 +5,17 @@
  */
 ;(function(window, undefined) {
 	'use strict';
-	
+
 	var VERSION = '0.1.0';
-	
+
 	/**
 	 * Create the Guier object to attach methods to
 	 */
 	var Guier = window.Guier || {};
-	
+
 	/**
 	 * @constructor
-	 * Bootstraps the library by storing references to the Google 
+	 * Bootstraps the library by storing references to the Google
 	 * Maps API objects
 	 *
 	 * @param {Object} args
@@ -28,8 +28,8 @@
 		this.geoObject = {};
 
 		// References to the Google API objects
-		this.geocoder = (args.geocoder) ? args.geocoder : undefined;
-		this.coordinates = (args.coordinates) ? args.coordinates : undefined;
+		this.geocoder = ('geocoder' in args) ? args.geocoder : undefined;
+		this.coordinates = ('coordinates' in args) ? args.coordinates : undefined;
 
 		// We need these objects in order to make the magic happen
 		if (this.geocoder === undefined || this.coordinates === undefined) {
@@ -37,7 +37,7 @@
 		}
 		this._reverseGeocode();
 	};
-	
+
 	/**
 	 * @private
 	 * Makes the API call to the Geocoder service
@@ -49,13 +49,13 @@
 		// binding reference to this to anonymous function so that it is available in the callback
 		this.geocoder.geocode({ 'latLng': this.coordinates }, (this._parseGeocodeObject).bind(this));
 	};
-	
+
 	/**
 	 * @private
-	 * Callback function used when Google geocode() method is called. This 
-	 * method parses the returned Geocoder object and sets it to an internal 
+	 * Callback function used when Google geocode() method is called. This
+	 * method parses the returned Geocoder object and sets it to an internal
 	 * object that is used to return data via the public API methods.
-	 * 
+	 *
 	 * @param {Object} results
 	 * 			An object with the resulting geocode data
 	 * @param {String} status
@@ -107,11 +107,11 @@
 
 		return '';
 	};
-	
+
 	/**
-	 * Main accessor method. Takes a string representing the requested 
+	 * Main accessor method. Takes a string representing the requested
 	 * geocode data and an optional callback and returns the information
-	 * 
+	 *
 	 * @param {String} attr
 	 * 			A string containing the type of requested data
 	 * @param {Function} callback
@@ -138,7 +138,7 @@
 
 		return retval;
 	};
-	
+
 	// Expose the Guier object for use
 	window.Guier = Guier;
 }(window));
